@@ -48,3 +48,32 @@ const cardArray = [
     img: "images/pizza.png",
   },
 ];
+
+cardArray.sort(() => 0.5 - Math.random());
+
+const gridDisplay = document.querySelector("#grid");
+
+const cardsChosen = [];
+
+function createBoard() {
+  for (let i = 0; i < 12; i++) {
+    const card = document.createElement("img");
+    card.setAttribute("src", "images/blank.png");
+    card.setAttribute("data-id", i);
+    card.addEventListener("click", flipCard);
+    gridDisplay.appendChild(card);
+  }
+}
+
+createBoard();
+
+function flipCard() {
+  console.log(cardArray);
+  let cardId = this.getAttribute("data-id");
+  cardsChosen.push(cardArray[cardId].name);
+  console.log("click", cardId);
+  console.log(cardsChosen);
+  this.setAttribute("src", cardArray[cardId].img);
+}
+
+// 49 minut
